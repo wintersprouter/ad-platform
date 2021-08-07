@@ -259,6 +259,19 @@ body {
 .cursor-pointer {
   cursor: pointer;
 }
+.scrollbar {
+  overflow-y: scroll;
+  padding-left: 6px;
+  // 整體的樣式
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  // bar的樣式
+  &::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}
 
 /* style start */
 
@@ -282,12 +295,45 @@ nav {
   }
 }
 
+#main-app {
+  height: 100%;   
+}
+
 #main-content {
+  height: 100%;   
   margin-left: 60px;
+  display: flex;
 }
 
 .card-list-panel {
+  height: 100%; 
+  overflow-y: scroll;
+  flex: 0 0 250px;
+//   前面這兩個 0 代表 flex-grow 和 flex-shrink 為 0，在 main-content 當中剩下來的空間並不需要分配給 card-list-panel。而在縮小的時候，也不用對 card-list-panel 的寬度進行縮減。
+// 而最後的 flex-basis 則是設定 cart list 主軸 (main axis) 的屬性。 flex-basis 是長是寬視當前的 flex-direction 決定。當元素們的排列方向是橫向 (row) 時，決定的是元素的寬度。反之，當元素是垂直排列 (column) 時，決定的是元素的高度。現在 card-list-panel 主軸是橫向的，所以設定 flex-basis 為 250px 就等於設定 card panel 的寬度是 250px。
+  background-color: white;
+  @extend %standard-boxshadow;
+  z-index: 20;
+  .flex-row {
+    display: flex;
+    align-items: center;
+  }
   .card {
+    width: 200px;
+    margin-top: 16px;
+    padding: 8px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.09);
+    font-size: 14px;
+    cursor: pointer;
+    opacity: 0.5;
+    &:hover, &.active {
+      opacity: 1;
+    }
+    &.active {
+      border-color: $light-gray;
+    }
     i {
       width: 20px;
       font-size: 16px;
@@ -308,4 +354,9 @@ nav {
       }
     }
   }
+}
+
+.right-content {
+  flex: 1;
+  // 已經規定 card-list-panel 的寬度為 250px，因此以上設定的意思是指現在把 main-content 中剩下來的空間，都分配給 right-content。
 }
