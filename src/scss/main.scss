@@ -164,6 +164,15 @@ $spacers: (
   box-shadow: 3px 0 13px 0 rgba(100, 112, 134, 0.1);
 }
 
+
+@mixin getStepNums($num) {
+  @for $i from 1 through $num {
+    &:nth-child(#{$i}) .circle-container::after {
+      content: "#{$i}";
+    }
+  }
+}
+
 html {
   font-size: 16px;
   height: 100%;
@@ -359,4 +368,54 @@ nav {
 .right-content {
   flex: 1;
   // 已經規定 card-list-panel 的寬度為 250px，因此以上設定的意思是指現在把 main-content 中剩下來的空間，都分配給 right-content。
+}
+
+.stepper-panel {
+  height: 120px;
+  padding-top: 40px;
+  .stepper-container {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+  }
+  .step {
+    flex: 1;
+    text-align: center;
+    position: relative;
+    @include getStepNums(3);
+    &.checked, &.active {
+      .circle-container {
+        background-color: $freedom-blue;
+        color: $body-color;
+      }
+      .label-container {
+        color: $body-color;
+      }
+      &.checked .circle-container::after {
+        content: "\2714";
+      }
+    }
+    .circle-container {
+      height: 24px;
+      width: 24px;
+      background-color: $light-gray;
+      border-radius: 50%;
+      color: $dark-gray;
+      margin: 0 auto;
+    }
+    .label-container {
+      margin-top: 10px;
+      color: $light-gray;
+    }
+    .connect-line {
+      display: block;
+      height: 1px;
+      background-color: $light-gray;
+      position: absolute;
+      top: 12px;
+
+      right: calc(50% + 20px);
+      left: calc(-50% + 20px);
+    }
+  }
 }
