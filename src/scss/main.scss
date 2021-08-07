@@ -360,3 +360,26 @@ nav {
   flex: 1;
   // 已經規定 card-list-panel 的寬度為 250px，因此以上設定的意思是指現在把 main-content 中剩下來的空間，都分配給 right-content。
 }
+
+.stepper-panel {
+  height: 120px;
+  .stepper-container {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+  }
+}
+.step {
+  .circle-container {
+    height: 24px;
+    width: 24px;
+    background-color: $light-gray;
+    border-radius: 50%;
+    color: $dark-gray;
+    margin: 0 auto;
+  }
+  .label-container {
+    margin-top: 10px;
+    color: $light-gray;
+  }
+}
