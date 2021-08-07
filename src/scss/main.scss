@@ -457,6 +457,15 @@ form {
     &:hover, &:focus {
       border-color: $dark-gray;
     }
+    &[type="checkbox"],&[type="radio"] {
+      cursor: pointer;
+      // ~ sibling 選擇器來選擇跟 checkbox 同一層的 label
+      ~ label {
+        display: inline-block;
+        font-weight: normal;
+        margin: 0;
+      }
+    }
     // [<屬性> = 字串]透過 HTML 屬性來選擇 HTML 元素
     &[type="checkbox"] {
       // 取消預設樣式
@@ -480,11 +489,17 @@ form {
       &:hover {
         border-color: $dark-gray;
       }
-      // ~ sibling 選擇器來選擇跟 checkbox 同一層的 label
-      ~ label {
-        display: inline-block;
-        font-weight: normal;
-        margin: 0;
+    }
+    &[type="radio"] {
+      -webkit-appearance: none; 
+      border-radius: 50%;
+      &:checked {
+      // inset 改變陰影方向
+      // x-偏移量 (x-offset) 0 、y-偏移量 (y-offset) 0、陰影模糊半徑 (blur radius) 0、陰影擴散半徑 (spread radius) 5px、與陰影顏色 (color)
+      box-shadow: inset 0 0 0 5px $secondary-blue;
+      }
+      ~label {
+        margin-right: 20px;
       }
     }  
   } 
