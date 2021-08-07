@@ -448,6 +448,20 @@ nav {
     border-radius: 5px;
     overflow-y: scroll;
   }
+  .form-container {
+    height: 100%;
+    form {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      .form-content {
+        flex: 1;
+      }
+    }
+  }
+  &[disabled] {
+    opacity: 0.5;
+  }
 }
 
 form {
@@ -553,4 +567,24 @@ form {
     resize: none;
     overflow-y: scroll
   }   
+}
+.btn {
+  font-size: 16px;
+  border-radius: 5px;
+  height: 32px;
+  padding: 0 16px;
+  box-shadow: 1px 1px 5px #a6a6a6;
+  &.btn-primary {
+    color: $white;
+    background-color: $secondary-blue;
+  }
+  &.btn-outline {
+    color: $dark-gray;
+  }
+  &:hover {
+    box-shadow: 1px 1px 5px $dark-gray;
+  }
+  &[disabled] {
+    opacity: 0.5;
+  }
 }
