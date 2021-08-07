@@ -381,6 +381,7 @@ nav {
   .step {
     flex: 1;
     text-align: center;
+    position: relative;
     @include getStepNums(3);
     &.checked, &.active {
       .circle-container {
@@ -404,9 +405,17 @@ nav {
     }
     .label-container {
       margin-top: 10px;
-      padding-top: 40px;
       color: $light-gray;
     }
-    
+    .connect-line {
+      display: block;
+      height: 1px;
+      background-color: $light-gray;
+      position: absolute;
+      top: 12px;
+
+      right: calc(50% + 20px);
+      left: calc(-50% + 20px);
+    }
   }
 }
