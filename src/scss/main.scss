@@ -457,5 +457,35 @@ form {
     &:hover, &:focus {
       border-color: $dark-gray;
     }
+    // [<屬性> = 字串]透過 HTML 屬性來選擇 HTML 元素
+    &[type="checkbox"] {
+      // 取消預設樣式
+      -webkit-appearance: none;
+      border-radius: 3px;
+      position: relative;
+      &:checked {
+        background-color: $secondary-blue;
+        &::after {
+          content: "\2714";
+          position: absolute;
+          top: 0;
+          left: 3px;
+          font-size: 12px;
+          color: $white;
+        }
+      }
+      &:focus {
+        border-color: $light-gray;
+      }
+      &:hover {
+        border-color: $dark-gray;
+      }
+      // ~ sibling 選擇器來選擇跟 checkbox 同一層的 label
+      ~ label {
+        display: inline-block;
+        font-weight: normal;
+        margin: 0;
+      }
+    }  
   } 
 }
