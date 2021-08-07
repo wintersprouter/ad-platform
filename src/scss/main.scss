@@ -538,15 +538,19 @@ form {
       transform: translateY(-50%);// 以自己 y-軸的高度，移動 -50%
       z-index: 1;
     }    
-  }    
-}
-select {
-  @extend %input-style;
-  -webkit-appearance: none;
-  cursor: pointer;
-  width: 100%;
-  &:invalid {
-    color: #747474;
   }
+  select {
+    @extend %input-style;
+    -webkit-appearance: none;
+    cursor: pointer;
+    width: 100%;
+    &:invalid {
+      color: #747474;
+    }
+  }
+  textarea {
+    @extend %input-style;
+    resize: none;
+    overflow-y: scroll
+  }   
 }
-
