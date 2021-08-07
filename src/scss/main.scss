@@ -431,4 +431,11 @@ nav {
   padding: 32px 0; 
   flex: 1;
   overflow-y: scroll;
+  .terms-panel {
+    max-height: 300px;
+    padding: 16px;
+    border: 1px solid $light-gray;
+    border-radius: 5px;
+    overflow-y: scroll;
+  }
 }
