@@ -1,4 +1,4 @@
-# 切版練習:網紅廣告平台 ad-platform
+# 切版練習: 網紅廣告平台 ad-platform
 <p align="center">
 <img src="https://raw.githubusercontent.com/wintersprouter/ad-platform/master/public/FireShot%20Capture%20210%20-%20Document%20-%20.png">
 </p>
