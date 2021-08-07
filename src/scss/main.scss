@@ -164,6 +164,16 @@ $spacers: (
   box-shadow: 3px 0 13px 0 rgba(100, 112, 134, 0.1);
 }
 
+%input-style {
+  border: 1px solid $light-gray;
+  border-radius: 5px;
+  font-size: 16px; 
+  padding: 8px;
+  &:hover, &:focus {
+    border-color: $dark-gray;
+  }
+}
+
 
 @mixin getStepNums($num) {
   @for $i from 1 through $num {
@@ -368,14 +378,18 @@ nav {
 .right-content {
   flex: 1;
   // 已經規定 card-list-panel 的寬度為 250px，因此以上設定的意思是指現在把 main-content 中剩下來的空間，都分配給 right-content。
+  display: flex;
+  flex-direction: column;    
+  .container {
+    width: 80%;
+    margin: 0 auto;
+  }
 }
 
 .stepper-panel {
   height: 120px;
   padding-top: 40px;
   .stepper-container {
-    width: 80%;
-    margin: 0 auto;
     display: flex;
   }
   .step {
@@ -417,5 +431,160 @@ nav {
       right: calc(50% + 20px);
       left: calc(-50% + 20px);
     }
+  }
+}
+
+.form-panel {
+  @extend %standard-boxshadow;
+  width: 100%;
+  background-color: $white;
+  padding: 32px 0; 
+  flex: 1;
+  overflow-y: scroll;
+  .terms-panel {
+    max-height: 300px;
+    padding: 16px;
+    border: 1px solid $light-gray;
+    border-radius: 5px;
+    overflow-y: scroll;
+  }
+  .form-container {
+    height: 100%;
+    form {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      .form-content {
+        flex: 1;
+      }
+    }
+  }
+  &[disabled] {
+    opacity: 0.5;
+  }
+}
+
+form {
+  .form-row {
+    margin-bottom: 24px;
+    > label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 500;
+    }  
+  }
+  input {
+    @extend %input-style;
+    &:hover, &:focus {
+      border-color: $dark-gray;
+    }
+    &[type="checkbox"],&[type="radio"] {
+      cursor: pointer;
+      // ~ sibling 選擇器來選擇跟 checkbox 同一層的 label
+      ~ label {
+        display: inline-block;
+        font-weight: normal;
+        margin: 0;
+      }
+    }
+    // [<屬性> = 字串]透過 HTML 屬性來選擇 HTML 元素
+    &[type="checkbox"] {
+      // 取消預設樣式
+      -webkit-appearance: none;
+      border-radius: 3px;
+      position: relative;
+      &:checked {
+        background-color: $secondary-blue;
+        &::after {
+          content: "\2714";
+          position: absolute;
+          top: 0;
+          left: 3px;
+          font-size: 12px;
+          color: $white;
+        }
+      }
+      &:focus {
+        border-color: $light-gray;
+      }
+      &:hover {
+        border-color: $dark-gray;
+      }
+    }
+    &[type="radio"] {
+      -webkit-appearance: none; 
+      border-radius: 50%;
+      &:checked {
+      // inset 改變陰影方向
+      // x-偏移量 (x-offset) 0 、y-偏移量 (y-offset) 0、陰影模糊半徑 (blur radius) 0、陰影擴散半徑 (spread radius) 5px、與陰影顏色 (color)
+      box-shadow: inset 0 0 0 5px $secondary-blue;
+      }
+      ~label {
+        margin-right: 20px;
+      }
+    }
+    &[type="date"] {
+      cursor: pointer;
+      &:invalid {
+        color: #747474;
+      }
+    }
+    &[type="number"] {
+      width: 60px;
+    }  
+  }
+  .select-wrapper {
+    position: relative;
+    width: 25%;
+    z-index: 0;
+    &::after {
+      // 做法1:向下的三角形
+      // content: "\25BE";
+
+      //做法2
+      content: "";
+      border-style: solid;
+      border-width: 6px 5px 0 5px;
+      border-color: $light-gray transparent transparent transparent;
+      position: absolute;
+      top: 50%;
+      right: 8px;
+      transform: translateY(-50%);// 以自己 y-軸的高度，移動 -50%
+      z-index: 1;
+    }    
+  }
+  select {
+    @extend %input-style;
+    -webkit-appearance: none;
+    cursor: pointer;
+    width: 100%;
+    &:invalid {
+      color: #747474;
+    }
+  }
+  textarea {
+    @extend %input-style;
+    resize: none;
+    overflow-y: scroll
+  }   
+}
+.btn {
+  font-size: 16px;
+  border-radius: 5px;
+  height: 32px;
+  padding: 0 16px;
+  box-shadow: 1px 1px 5px #a6a6a6;
+  &.btn-primary {
+    color: $white;
+    background-color: $secondary-blue;
+  }
+  &.btn-outline {
+    color: $dark-gray;
+  }
+  &:hover {
+    box-shadow: 1px 1px 5px $dark-gray;
+  }
+  &[disabled] {
+    opacity: 0.5;
   }
 }
