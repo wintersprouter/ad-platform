@@ -164,6 +164,15 @@ $spacers: (
   box-shadow: 3px 0 13px 0 rgba(100, 112, 134, 0.1);
 }
 
+
+@mixin getStepNums($num) {
+  @for $i from 1 through $num {
+    &:nth-child(#{$i}) .circle-container::after {
+      content: "#{$i}";
+    }
+  }
+}
+
 html {
   font-size: 16px;
   height: 100%;
@@ -370,6 +379,9 @@ nav {
   }
 }
 .step {
+  flex: 1;
+  text-align: center;
+  @include getStepNums(3);
   .circle-container {
     height: 24px;
     width: 24px;
