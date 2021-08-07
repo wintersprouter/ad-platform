@@ -164,6 +164,16 @@ $spacers: (
   box-shadow: 3px 0 13px 0 rgba(100, 112, 134, 0.1);
 }
 
+%input-style {
+  border: 1px solid $light-gray;
+  border-radius: 5px;
+  font-size: 16px; 
+  padding: 8px;
+  &:hover, &:focus {
+    border-color: $dark-gray;
+  }
+}
+
 
 @mixin getStepNums($num) {
   @for $i from 1 through $num {
@@ -450,10 +460,7 @@ form {
     }  
   }
   input {
-    border: 1px solid $light-gray;
-    border-radius: 5px;
-    font-size: 16px;
-    padding: 0.5em;
+    @extend %input-style;
     &:hover, &:focus {
       border-color: $dark-gray;
     }
@@ -511,5 +518,35 @@ form {
     &[type="number"] {
       width: 60px;
     }  
-  } 
+  }
+  .select-wrapper {
+    position: relative;
+    width: 25%;
+    z-index: 0;
+    &::after {
+      // 做法1:向下的三角形
+      // content: "\25BE";
+
+      //做法2
+      content: "";
+      border-style: solid;
+      border-width: 6px 5px 0 5px;
+      border-color: $light-gray transparent transparent transparent;
+      position: absolute;
+      top: 50%;
+      right: 8px;
+      transform: translateY(-50%);// 以自己 y-軸的高度，移動 -50%
+      z-index: 1;
+    }    
+  }    
 }
+select {
+  @extend %input-style;
+  -webkit-appearance: none;
+  cursor: pointer;
+  width: 100%;
+  &:invalid {
+    color: #747474;
+  }
+}
+

@@ -82,14 +82,17 @@
                       id="a-time-end" name="a-time-end" type="date" required>
                   </div>
                   <div class="form-row"><label>廣告類別</label>
-                    <select name="a-type" id="a-type">
-                      <option value="" disabled selected>請選擇廣告類別</option>
-                      <option value="game">遊戲</option>
-                      <option value="fashion">時尚</option>
-                      <option value="travel">旅遊</option>
-                      <option value="shopping">購物</option>
-                      <option value="all">不拘</option>
-                    </select>
+                    <div class="select-wrapper">
+                      <!-- select 標籤不屬於可插入內容的容器，不能加入使用偽元素，所以須另設 Select-wrapper-->
+                      <select name="a-type" id="a-type" required>
+                        <option value="" disabled selected>請選擇廣告類別</option>
+                        <option value="game">遊戲</option>
+                        <option value="fashion">時尚</option>
+                        <option value="travel">旅遊</option>
+                        <option value="shopping">購物</option>
+                        <option value="all">不拘</option>
+                      </select>
+                    </div>
                   </div>
                   <div class="form-row">
                     <label for="">受眾性別</label>
@@ -103,14 +106,16 @@
                     <input type="number" min="13" max="65" value="65">
                   </div>
                   <div class="form-row "><label for="">受眾地點</label>
-                    <select name="a-type" id="a-location">
-                      <option value="" disabled selected>請選擇受眾地點</option>
-                      <option value="">北部</option>
-                      <option value="">中部</option>
-                      <option value="">南部</option>
-                      <option value="">中部</option>
-                      <option value="">不拘</option>
-                    </select>
+                    <div class="select-wrapper">
+                      <select name="a-type" id="a-location" required>
+                        <option value="" disabled selected>請選擇受眾地點</option>
+                        <option value="">北部</option>
+                        <option value="">中部</option>
+                        <option value="">南部</option>
+                        <option value="">中部</option>
+                        <option value="">不拘</option>
+                      </select>
+                    </div>
                   </div>
                 </div>
                 <div class="part">
